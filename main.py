@@ -1,5 +1,6 @@
 from src.environment import create_environment, is_free_cell, get_neighbors
 from src.visualization import plot_environment
+from src.planners.dijkstra import run_dijkstra
 
 
 def main():
@@ -14,11 +15,23 @@ def main():
     print("Neighbors of start:", get_neighbors(
         start, grid.shape[0], grid.shape[1]))
 
+    found, path = run_dijkstra(
+        grid,
+        start,
+        goal,
+        get_neighbors_func=get_neighbors,
+        is_free_cell_func=is_free_cell,
+    )
+
+    print("Path found:", found)
+    print("Path length:", len(path))
+
     plot_environment(
         grid,
         start,
         goal,
-        save_path="outputs/figures/environment.png"
+        path=path,
+        save_path="outputs/figures/dijkstra_path.png"
     )
 
 
