@@ -1,4 +1,5 @@
 from src.environment import create_environment, is_free_cell, get_neighbors
+from src.visualization import plot_environment
 
 
 def main():
@@ -12,7 +13,13 @@ def main():
     print("Obstacle count:", grid.sum())
     print("Neighbors of start:", get_neighbors(
         start, grid.shape[0], grid.shape[1]))
-    print(grid)
+
+    plot_environment(
+        grid,
+        start,
+        goal,
+        save_path="outputs/figures/environment.png"
+    )
 
 
 if __name__ == "__main__":
