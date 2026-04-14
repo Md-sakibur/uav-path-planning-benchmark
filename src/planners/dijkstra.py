@@ -32,7 +32,9 @@ def run_dijkstra(grid, start, goal, get_neighbors_func, is_free_cell_func):
 
         if current == goal:
             path = reconstruct_path(came_from, current)
-            return True, path
+            path_cost = distances[current]
+            visited_count = len(visited)
+            return True, path, path_cost, visited_count
 
         neighbors = get_neighbors_func(current, rows, cols)
 
@@ -47,4 +49,4 @@ def run_dijkstra(grid, start, goal, get_neighbors_func, is_free_cell_func):
                 came_from[neighbor] = current
                 heapq.heappush(priority_queue, (new_distance, neighbor))
 
-    return False, []
+    return False, [], 0, len(visited)

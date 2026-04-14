@@ -1,6 +1,7 @@
 from src.environment import create_environment, is_free_cell, get_neighbors
 from src.visualization import plot_environment
 from src.planners.dijkstra import run_dijkstra
+from src.metrics import summarize_results, save_results_to_json
 
 
 def main():
@@ -15,7 +16,7 @@ def main():
     print("Neighbors of start:", get_neighbors(
         start, grid.shape[0], grid.shape[1]))
 
-    found, path = run_dijkstra(
+    found, path, path_cost, visited_count = run_dijkstra(
         grid,
         start,
         goal,
@@ -23,8 +24,12 @@ def main():
         is_free_cell_func=is_free_cell,
     )
 
-    print("Path found:", found)
-    print("Path length:", len(path))
+    results = summarize_results(found, path, path_cost, visited_count)
+
+    print("Results summary:")
+    print(results)
+
+    save_results_to_json(results, "outputs/logs/dijkstra_results.json")
 
     plot_environment(
         grid,
