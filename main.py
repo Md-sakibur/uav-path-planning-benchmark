@@ -1,12 +1,13 @@
 from src.environment import create_environment, is_free_cell, get_neighbors
 from src.visualization import plot_environment
-from src.planners.dijkstra import run_dijkstra
+from src.planners.astar import run_astar
 from src.metrics import summarize_results, save_results_to_json
 
 
 def main():
     grid, start, goal = create_environment(
-        rows=20, cols=20, obstacle_ratio=0.2, seed=42)
+        rows=20, cols=20, obstacle_ratio=0.2, seed=42
+    )
 
     print("UAV Path Planning Benchmark Project Initialized")
     print("Grid shape:", grid.shape)
@@ -16,7 +17,7 @@ def main():
     print("Neighbors of start:", get_neighbors(
         start, grid.shape[0], grid.shape[1]))
 
-    found, path, path_cost, visited_count = run_dijkstra(
+    found, path, path_cost, visited_count = run_astar(
         grid,
         start,
         goal,
@@ -26,17 +27,17 @@ def main():
 
     results = summarize_results(found, path, path_cost, visited_count)
 
-    print("Results summary:")
+    print("A* Results summary:")
     print(results)
 
-    save_results_to_json(results, "outputs/logs/dijkstra_results.json")
+    save_results_to_json(results, "outputs/logs/astar_results.json")
 
     plot_environment(
         grid,
         start,
         goal,
         path=path,
-        save_path="outputs/figures/dijkstra_path.png"
+        save_path="outputs/figures/astar_path.png"
     )
 
 
