@@ -1,5 +1,6 @@
 from src.environment import create_environment, is_free_cell, get_neighbors
 from src.visualization import plot_environment
+from src.planners.dijkstra import run_dijkstra
 from src.planners.astar import run_astar
 from src.metrics import summarize_results, save_results_to_json
 
@@ -17,7 +18,7 @@ def main():
     print("Neighbors of start:", get_neighbors(
         start, grid.shape[0], grid.shape[1]))
 
-    found, path, path_cost, visited_count = run_astar(
+    d_found, d_path, d_path_cost, d_visited_count = run_dijkstra(
         grid,
         start,
         goal,
@@ -25,18 +26,50 @@ def main():
         is_free_cell_func=is_free_cell,
     )
 
-    results = summarize_results(found, path, path_cost, visited_count)
+    a_found, a_path, a_path_cost, a_visited_count = run_astar(
+        grid,
+        start,
+        goal,
+        get_neighbors_func=get_neighbors,
+        is_free_cell_func=is_free_cell,
+    )
 
-    print("A* Results summary:")
-    print(results)
+    dijkstra_results = summarize_results(
+        d_found, d_path, d_path_cost, d_visited_count)
+    astar_results = summarize_results(
+        a_found, a_path, a_path_cost, a_visited_count)
 
-    save_results_to_json(results, "outputs/logs/astar_results.json")
+    comparison_results = {
+        "dijkstra": dijkstra_results,
+        "astar": astar_results,
+    }
+
+    print("\nDijkstra Results:")
+    print(dijkstra_results)
+
+    print("\nA* Results:")
+    print(astar_results)
+
+    print("\nVisited nodes comparison:")
+    print("Dijkstra:", d_visited_count)
+    print("A*:", a_visited_count)
+
+    save_results_to_json(comparison_results,
+                         "outputs/logs/dijkstra_astar_comparison.json")
 
     plot_environment(
         grid,
         start,
         goal,
-        path=path,
+        path=d_path,
+        save_path="outputs/figures/dijkstra_path.png"
+    )
+
+    plot_environment(
+        grid,
+        start,
+        goal,
+        path=a_path,
         save_path="outputs/figures/astar_path.png"
     )
 
