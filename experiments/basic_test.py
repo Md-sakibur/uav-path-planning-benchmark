@@ -1,6 +1,7 @@
 from src.environment import create_environment, is_free_cell, get_neighbors
 from src.planners.dijkstra import run_dijkstra
-from src.metrics import summarize_results, save_results_to_json
+from src.planners.astar import run_astar
+from src.metrics import save_results_to_json
 
 
 def compute_average_results(all_results):
@@ -23,9 +24,11 @@ def compute_average_results(all_results):
     }
 
 
-def run_multiple_seeds():
+def run_comparison_multiple_seeds():
     seeds = [1, 2, 3, 4, 5]
-    all_results = []
+
+    dijkstra_results = []
+    astar_results = []
 
     for seed in seeds:
         grid, start, goal = create_environment(
@@ -35,7 +38,7 @@ def run_multiple_seeds():
             seed=seed
         )
 
-        found, path, path_cost, visited_count = run_dijkstra(
+        d_found, d_path, d_path_cost, d_visited = run_dijkstra(
             grid,
             start,
             goal,
@@ -43,21 +46,57 @@ def run_multiple_seeds():
             is_free_cell_func=is_free_cell,
         )
 
-        result = summarize_results(found, path, path_cost, visited_count)
-        result["seed"] = seed
-        all_results.append(result)
+        a_found, a_path, a_path_cost, a_visited = run_astar(
+            grid,
+            start,
+            goal,
+            get_neighbors_func=get_neighbors,
+            is_free_cell_func=is_free_cell,
+        )
 
-        print(f"Seed {seed}: {result}")
+        d_result = {
+            "seed": seed,
+            "path_found": d_found,
+            "path_length": len(d_path),
+            "path_cost": d_path_cost,
+            "visited_nodes": d_visited,
+        }
 
-    summary = compute_average_results(all_results)
+        a_result = {
+            "seed": seed,
+            "path_found": a_found,
+            "path_length": len(a_path),
+            "path_cost": a_path_cost,
+            "visited_nodes": a_visited,
+        }
 
-    print("\nAverage summary:")
-    print(summary)
+        dijkstra_results.append(d_result)
+        astar_results.append(a_result)
+
+        print(f"Seed {seed} | Dijkstra: {d_result}")
+        print(f"Seed {seed} | A*:       {a_result}")
+
+    dijkstra_average = compute_average_results(dijkstra_results)
+    astar_average = compute_average_results(astar_results)
+
+    comparison_data = {
+        "dijkstra_results": dijkstra_results,
+        "astar_results": astar_results,
+        "dijkstra_average": dijkstra_average,
+        "astar_average": astar_average,
+    }
+
+    print("\nDijkstra average:")
+    print(dijkstra_average)
+
+    print("\nA* average:")
+    print(astar_average)
 
     save_results_to_json(
-        all_results, "outputs/logs/dijkstra_multiple_seeds.json")
-    save_results_to_json(summary, "outputs/logs/dijkstra_average_summary.json")
+        comparison_data,
+        "outputs/logs/dijkstra_astar_multiple_seeds.json"
+    )
 
 
 if __name__ == "__main__":
-    run_multiple_seeds()
+    run_comparison_multiple_seeds()
