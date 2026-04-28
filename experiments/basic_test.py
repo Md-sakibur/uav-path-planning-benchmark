@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 from src.environment import create_environment, is_free_cell, get_neighbors
 from src.planners.dijkstra import run_dijkstra
 from src.planners.astar import run_astar
@@ -22,6 +24,21 @@ def compute_average_results(all_results):
         "average_path_cost": average_path_cost,
         "average_visited_nodes": average_visited_nodes,
     }
+
+
+def plot_average_visited_nodes(dijkstra_average, astar_average, save_path):
+    algorithms = ["Dijkstra", "A*"]
+    average_visited_nodes = [
+        dijkstra_average["average_visited_nodes"],
+        astar_average["average_visited_nodes"],
+    ]
+
+    plt.figure(figsize=(8, 6))
+    plt.bar(algorithms, average_visited_nodes)
+    plt.title("Average Visited Nodes: Dijkstra vs A*")
+    plt.ylabel("Average Visited Nodes")
+    plt.savefig(save_path, bbox_inches="tight")
+    plt.show()
 
 
 def run_comparison_multiple_seeds():
@@ -95,6 +112,12 @@ def run_comparison_multiple_seeds():
     save_results_to_json(
         comparison_data,
         "outputs/logs/dijkstra_astar_multiple_seeds.json"
+    )
+
+    plot_average_visited_nodes(
+        dijkstra_average,
+        astar_average,
+        "outputs/figures/dijkstra_astar_average_visited_nodes.png"
     )
 
 
