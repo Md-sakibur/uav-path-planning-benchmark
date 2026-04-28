@@ -76,6 +76,17 @@ Across 5 randomized environments:
 ### Key Conclusion
 Both Dijkstra and A* achieved the same path quality and 100% success rate in the tested benchmark, but A* required significantly fewer visited nodes, showing better search efficiency.
 
+### Key Conclusion
+Both Dijkstra and A* achieved the same path quality and 100% success rate in the tested benchmark, but A* required significantly fewer visited nodes, showing better search efficiency.
+
+## Example Figures
+
+### A* Path Example
+![A* Path Example](outputs/figures/astar_path.png)
+
+### Average Visited Nodes Comparison
+![Average Visited Nodes Comparison](outputs/figures/dijkstra_astar_average_visited_nodes.png)
+
 ---
 
 ## Project Structure
