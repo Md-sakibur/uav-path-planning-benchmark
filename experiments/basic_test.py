@@ -16,6 +16,8 @@ def compute_average_results(all_results):
                             for result in all_results) / total_runs
     average_visited_nodes = sum(result["visited_nodes"]
                                 for result in all_results) / total_runs
+    average_runtime_seconds = sum(
+        result["runtime_seconds"] for result in all_results) / total_runs
 
     return {
         "total_runs": total_runs,
@@ -23,6 +25,7 @@ def compute_average_results(all_results):
         "average_path_length": average_path_length,
         "average_path_cost": average_path_cost,
         "average_visited_nodes": average_visited_nodes,
+        "average_runtime_seconds": average_runtime_seconds,
     }
 
 
@@ -55,7 +58,7 @@ def run_comparison_multiple_seeds():
             seed=seed
         )
 
-        d_found, d_path, d_path_cost, d_visited = run_dijkstra(
+        d_found, d_path, d_path_cost, d_visited, d_runtime = run_dijkstra(
             grid,
             start,
             goal,
@@ -63,7 +66,7 @@ def run_comparison_multiple_seeds():
             is_free_cell_func=is_free_cell,
         )
 
-        a_found, a_path, a_path_cost, a_visited = run_astar(
+        a_found, a_path, a_path_cost, a_visited, a_runtime = run_astar(
             grid,
             start,
             goal,
@@ -77,6 +80,7 @@ def run_comparison_multiple_seeds():
             "path_length": len(d_path),
             "path_cost": d_path_cost,
             "visited_nodes": d_visited,
+            "runtime_seconds": d_runtime,
         }
 
         a_result = {
@@ -85,6 +89,7 @@ def run_comparison_multiple_seeds():
             "path_length": len(a_path),
             "path_cost": a_path_cost,
             "visited_nodes": a_visited,
+            "runtime_seconds": a_runtime,
         }
 
         dijkstra_results.append(d_result)
