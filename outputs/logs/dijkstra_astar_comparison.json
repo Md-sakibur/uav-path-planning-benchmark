@@ -3,12 +3,14 @@
         "path_found": true,
         "path_length": 39,
         "path_cost": 38,
-        "visited_nodes": 317
+        "visited_nodes": 317,
+        "runtime_seconds": 0.00045020000834483653
     },
     "astar": {
         "path_found": true,
         "path_length": 39,
         "path_cost": 38,
-        "visited_nodes": 227
+        "visited_nodes": 227,
+        "runtime_seconds": 0.0003456999984337017
     }
 }

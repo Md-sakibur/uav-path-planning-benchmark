@@ -1,4 +1,5 @@
 import heapq
+import time
 
 
 def heuristic(position, goal):
@@ -17,6 +18,8 @@ def reconstruct_path(came_from, current):
 
 
 def run_astar(grid, start, goal, get_neighbors_func, is_free_cell_func):
+    start_time = time.perf_counter()
+
     rows, cols = grid.shape
 
     priority_queue = []
@@ -38,7 +41,8 @@ def run_astar(grid, start, goal, get_neighbors_func, is_free_cell_func):
             path = reconstruct_path(came_from, current)
             path_cost = g_costs[current]
             visited_count = len(visited)
-            return True, path, path_cost, visited_count
+            runtime = time.perf_counter() - start_time
+            return True, path, path_cost, visited_count, runtime
 
         neighbors = get_neighbors_func(current, rows, cols)
 
@@ -55,4 +59,5 @@ def run_astar(grid, start, goal, get_neighbors_func, is_free_cell_func):
                 f_cost = tentative_g_cost + heuristic(neighbor, goal)
                 heapq.heappush(priority_queue, (f_cost, neighbor))
 
-    return False, [], 0, len(visited)
+    runtime = time.perf_counter() - start_time
+    return False, [], 0, len(visited), runtime

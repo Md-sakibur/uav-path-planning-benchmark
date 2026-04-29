@@ -18,7 +18,7 @@ def main():
     print("Neighbors of start:", get_neighbors(
         start, grid.shape[0], grid.shape[1]))
 
-    d_found, d_path, d_path_cost, d_visited_count = run_dijkstra(
+    d_found, d_path, d_path_cost, d_visited_count, d_runtime = run_dijkstra(
         grid,
         start,
         goal,
@@ -26,7 +26,7 @@ def main():
         is_free_cell_func=is_free_cell,
     )
 
-    a_found, a_path, a_path_cost, a_visited_count = run_astar(
+    a_found, a_path, a_path_cost, a_visited_count, a_runtime = run_astar(
         grid,
         start,
         goal,
@@ -35,9 +35,11 @@ def main():
     )
 
     dijkstra_results = summarize_results(
-        d_found, d_path, d_path_cost, d_visited_count)
+        d_found, d_path, d_path_cost, d_visited_count, d_runtime
+    )
     astar_results = summarize_results(
-        a_found, a_path, a_path_cost, a_visited_count)
+        a_found, a_path, a_path_cost, a_visited_count, a_runtime
+    )
 
     comparison_results = {
         "dijkstra": dijkstra_results,
@@ -49,10 +51,6 @@ def main():
 
     print("\nA* Results:")
     print(astar_results)
-
-    print("\nVisited nodes comparison:")
-    print("Dijkstra:", d_visited_count)
-    print("A*:", a_visited_count)
 
     save_results_to_json(comparison_results,
                          "outputs/logs/dijkstra_astar_comparison.json")
