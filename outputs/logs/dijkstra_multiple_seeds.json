@@ -1,0 +1,37 @@
+[
+    {
+        "path_found": true,
+        "path_length": 39,
+        "path_cost": 38,
+        "visited_nodes": 317,
+        "seed": 1
+    },
+    {
+        "path_found": true,
+        "path_length": 39,
+        "path_cost": 38,
+        "visited_nodes": 319,
+        "seed": 2
+    },
+    {
+        "path_found": true,
+        "path_length": 39,
+        "path_cost": 38,
+        "visited_nodes": 318,
+        "seed": 3
+    },
+    {
+        "path_found": true,
+        "path_length": 39,
+        "path_cost": 38,
+        "visited_nodes": 320,
+        "seed": 4
+    },
+    {
+        "path_found": true,
+        "path_length": 39,
+        "path_cost": 38,
+        "visited_nodes": 318,
+        "seed": 5
+    }
+]

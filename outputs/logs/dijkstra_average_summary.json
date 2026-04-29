@@ -1,0 +1,7 @@
+{
+    "total_runs": 5,
+    "success_count": 5,
+    "average_path_length": 39.0,
+    "average_path_cost": 38.0,
+    "average_visited_nodes": 318.4
+}
