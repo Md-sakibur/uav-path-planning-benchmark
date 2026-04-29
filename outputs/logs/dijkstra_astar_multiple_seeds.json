@@ -1,0 +1,90 @@
+{
+    "dijkstra_results": [
+        {
+            "seed": 1,
+            "path_found": true,
+            "path_length": 39,
+            "path_cost": 38,
+            "visited_nodes": 317
+        },
+        {
+            "seed": 2,
+            "path_found": true,
+            "path_length": 39,
+            "path_cost": 38,
+            "visited_nodes": 319
+        },
+        {
+            "seed": 3,
+            "path_found": true,
+            "path_length": 39,
+            "path_cost": 38,
+            "visited_nodes": 318
+        },
+        {
+            "seed": 4,
+            "path_found": true,
+            "path_length": 39,
+            "path_cost": 38,
+            "visited_nodes": 320
+        },
+        {
+            "seed": 5,
+            "path_found": true,
+            "path_length": 39,
+            "path_cost": 38,
+            "visited_nodes": 318
+        }
+    ],
+    "astar_results": [
+        {
+            "seed": 1,
+            "path_found": true,
+            "path_length": 39,
+            "path_cost": 38,
+            "visited_nodes": 203
+        },
+        {
+            "seed": 2,
+            "path_found": true,
+            "path_length": 39,
+            "path_cost": 38,
+            "visited_nodes": 214
+        },
+        {
+            "seed": 3,
+            "path_found": true,
+            "path_length": 39,
+            "path_cost": 38,
+            "visited_nodes": 152
+        },
+        {
+            "seed": 4,
+            "path_found": true,
+            "path_length": 39,
+            "path_cost": 38,
+            "visited_nodes": 154
+        },
+        {
+            "seed": 5,
+            "path_found": true,
+            "path_length": 39,
+            "path_cost": 38,
+            "visited_nodes": 214
+        }
+    ],
+    "dijkstra_average": {
+        "total_runs": 5,
+        "success_count": 5,
+        "average_path_length": 39.0,
+        "average_path_cost": 38.0,
+        "average_visited_nodes": 318.4
+    },
+    "astar_average": {
+        "total_runs": 5,
+        "success_count": 5,
+        "average_path_length": 39.0,
+        "average_path_cost": 38.0,
+        "average_visited_nodes": 187.4
+    }
+}
