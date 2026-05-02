@@ -6,7 +6,7 @@
             "path_length": 39,
             "path_cost": 38,
             "visited_nodes": 317,
-            "runtime_seconds": 0.0004361000028438866
+            "runtime_seconds": 0.0004343999898992479
         },
         {
             "seed": 2,
@@ -14,7 +14,7 @@
             "path_length": 39,
             "path_cost": 38,
             "visited_nodes": 319,
-            "runtime_seconds": 0.0005585000035353005
+            "runtime_seconds": 0.0006566999945789576
         },
         {
             "seed": 3,
@@ -22,7 +22,7 @@
             "path_length": 39,
             "path_cost": 38,
             "visited_nodes": 318,
-            "runtime_seconds": 0.0003934999986086041
+            "runtime_seconds": 0.00039030000334605575
         },
         {
             "seed": 4,
@@ -30,7 +30,7 @@
             "path_length": 39,
             "path_cost": 38,
             "visited_nodes": 320,
-            "runtime_seconds": 0.0004054000019095838
+            "runtime_seconds": 0.0003948000376112759
         },
         {
             "seed": 5,
@@ -38,7 +38,7 @@
             "path_length": 39,
             "path_cost": 38,
             "visited_nodes": 318,
-            "runtime_seconds": 0.00038919999497011304
+            "runtime_seconds": 0.00039300002390518785
         }
     ],
     "astar_results": [
@@ -48,7 +48,7 @@
             "path_length": 39,
             "path_cost": 38,
             "visited_nodes": 203,
-            "runtime_seconds": 0.0003139000036753714
+            "runtime_seconds": 0.00039519998244941235
         },
         {
             "seed": 2,
@@ -56,7 +56,7 @@
             "path_length": 39,
             "path_cost": 38,
             "visited_nodes": 214,
-            "runtime_seconds": 0.0003132999991066754
+            "runtime_seconds": 0.00030690000858157873
         },
         {
             "seed": 3,
@@ -64,7 +64,7 @@
             "path_length": 39,
             "path_cost": 38,
             "visited_nodes": 152,
-            "runtime_seconds": 0.00021399999968707561
+            "runtime_seconds": 0.00021239998750388622
         },
         {
             "seed": 4,
@@ -72,7 +72,7 @@
             "path_length": 39,
             "path_cost": 38,
             "visited_nodes": 154,
-            "runtime_seconds": 0.0002275000006193295
+            "runtime_seconds": 0.0003294000052846968
         },
         {
             "seed": 5,
@@ -80,7 +80,7 @@
             "path_length": 39,
             "path_cost": 38,
             "visited_nodes": 214,
-            "runtime_seconds": 0.00030450000485870987
+            "runtime_seconds": 0.0003380000125616789
         }
     ],
     "dijkstra_average": {
@@ -89,7 +89,7 @@
         "average_path_length": 39.0,
         "average_path_cost": 38.0,
         "average_visited_nodes": 318.4,
-        "average_runtime_seconds": 0.0004365400003734976
+        "average_runtime_seconds": 0.000453840009868145
     },
     "astar_average": {
         "total_runs": 5,
@@ -97,6 +97,6 @@
         "average_path_length": 39.0,
         "average_path_cost": 38.0,
         "average_visited_nodes": 187.4,
-        "average_runtime_seconds": 0.00027464000158943235
+        "average_runtime_seconds": 0.0003163799992762506
     }
 }

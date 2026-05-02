@@ -44,6 +44,21 @@ def plot_average_visited_nodes(dijkstra_average, astar_average, save_path):
     plt.show()
 
 
+def plot_average_runtime(dijkstra_average, astar_average, save_path):
+    algorithms = ["Dijkstra", "A*"]
+    average_runtime_seconds = [
+        dijkstra_average["average_runtime_seconds"],
+        astar_average["average_runtime_seconds"],
+    ]
+
+    plt.figure(figsize=(8, 6))
+    plt.bar(algorithms, average_runtime_seconds)
+    plt.title("Average Runtime: Dijkstra vs A*")
+    plt.ylabel("Average Runtime (seconds)")
+    plt.savefig(save_path, bbox_inches="tight")
+    plt.show()
+
+
 def run_comparison_multiple_seeds():
     seeds = [1, 2, 3, 4, 5]
 
@@ -123,6 +138,12 @@ def run_comparison_multiple_seeds():
         dijkstra_average,
         astar_average,
         "outputs/figures/dijkstra_astar_average_visited_nodes.png"
+    )
+
+    plot_average_runtime(
+        dijkstra_average,
+        astar_average,
+        "outputs/figures/dijkstra_astar_average_runtime.png"
     )
 
 

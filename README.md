@@ -22,6 +22,15 @@ The environment is generated as a 2D grid with random obstacles, a start point, 
 - Multi-seed experiment pipeline
 - JSON-based result logging
 - Comparison chart for average visited nodes
+- Comparison chart for average runtime
+
+---
+
+## Demo
+
+A short demo video of the project will be added here.
+
+<!-- Replace this line with your video link later -->
 
 ---
 
@@ -65,6 +74,7 @@ Across 5 randomized environments:
   - average path length: 39.0
   - average path cost: 38.0
   - average visited nodes: 318.4
+  - average runtime seconds: 0.00045384
 
 - A* average:
   - total runs: 5
@@ -72,12 +82,12 @@ Across 5 randomized environments:
   - average path length: 39.0
   - average path cost: 38.0
   - average visited nodes: 187.4
+  - average runtime seconds: 0.00031638
 
 ### Key Conclusion
-Both Dijkstra and A* achieved the same path quality and 100% success rate in the tested benchmark, but A* required significantly fewer visited nodes, showing better search efficiency.
+Both Dijkstra and A* achieved the same path quality and 100% success rate in the tested benchmark. However, A* required significantly fewer visited nodes and also achieved a lower runtime on average. This shows that A* is more search-efficient than Dijkstra for the current UAV path planning benchmark.
 
-### Key Conclusion
-Both Dijkstra and A* achieved the same path quality and 100% success rate in the tested benchmark, but A* required significantly fewer visited nodes, showing better search efficiency.
+---
 
 ## Example Figures
 
@@ -86,6 +96,9 @@ Both Dijkstra and A* achieved the same path quality and 100% success rate in the
 
 ### Average Visited Nodes Comparison
 ![Average Visited Nodes Comparison](outputs/figures/dijkstra_astar_average_visited_nodes.png)
+
+### Average Runtime Comparison
+![Average Runtime Comparison](outputs/figures/dijkstra_astar_average_runtime.png)
 
 ---
 
@@ -116,3 +129,63 @@ uav-path-planning-benchmark/
 │   └── logs/
 │
 └── notes/
+
+```
+
+---
+
+## How to Run
+
+### Run single-map comparison
+```bash
+python main.py
+```
+
+### Run multi-seed comparison
+```bash
+python -m experiments.basic_test
+```
+
+---
+
+## Output Files
+
+### Figures
+Saved in:
+
+```text
+outputs/figures/
+```
+
+Examples:
+- `astar_path.png`
+- `dijkstra_path.png`
+- `dijkstra_astar_average_visited_nodes.png`
+- `dijkstra_astar_average_runtime.png`
+
+### Logs
+Saved in:
+
+```text
+outputs/logs/
+```
+
+Examples:
+- `astar_results.json`
+- `dijkstra_results.json`
+- `dijkstra_astar_comparison.json`
+- `dijkstra_astar_multiple_seeds.json`
+
+---
+
+## Future Work
+- Add more planning algorithms
+- Extend to dynamic obstacle environments
+- Add smoother trajectory generation
+- Add demo video for project presentation
+- Extend benchmarking to more complex UAV scenarios
+
+---
+
+## Author
+Path planning and algorithm benchmarking project.
