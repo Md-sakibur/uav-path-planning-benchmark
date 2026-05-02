@@ -28,10 +28,7 @@ The environment is generated as a 2D grid with random obstacles, a start point, 
 
 ## Demo
 
-A short demo video of the project will be added here.
-
-<!-- Replace this line with your video link later -->
-
+Project demo video: [Watch here](demo/uav_path_planning_demo.mp4)
 ---
 
 ## Implemented Algorithms
